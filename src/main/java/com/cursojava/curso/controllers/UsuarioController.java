@@ -15,6 +15,7 @@ public class UsuarioController  {
     private UsuarioDao usuarioDao;
     @RequestMapping(value="usuarios")
     public List <Usuario> getUsuarios() {
+    //public String getUsuarios() {
         return  usuarioDao.getUsuarios();
     }
 

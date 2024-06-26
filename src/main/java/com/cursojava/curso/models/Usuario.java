@@ -1,8 +1,6 @@
 package com.cursojava.curso.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +10,8 @@ import lombok.ToString;
 @Table(name = "usuarios")
 @ToString @EqualsAndHashCode
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Asegura que el ID se genere automáticamente
     @Getter @Setter @Column(name = "id")
     private Long id;
 

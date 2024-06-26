@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface UsuarioDao {
     List<Usuario> getUsuarios();
+    //String getUsuarios();
 
 
 }
