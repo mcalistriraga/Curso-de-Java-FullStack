@@ -22,11 +22,13 @@ public class UsuarioDaoImp implements UsuarioDao { // Implementa la interfaz Usu
         }
         String query = "FROM Usuario";  // Define una consulta JPQL para obtener todos los objetos Usuario
         return entityManager.createQuery(query, Usuario.class).getResultList();
-        //return "hola";
     }
-    /*public List<Usuario> getUsuarios() { // consulta a la BBDD
-        String query = "FROM Usuario";  // Define una consulta JPQL para obtener todos los objetos Usuario
-        //return entityManager.createQuery(query, Usuario.class).getResultList();
-        return "hola";
-    }*/
+
+    @Override
+    public void eliminar(Long id) {
+        Usuario usuario= entityManager.find(Usuario.class, id);
+        entityManager.remove(usuario);
+    }
+
+
 }
