@@ -14,7 +14,7 @@ public class UsuarioDaoImp implements UsuarioDao { // Implementa la interfaz Usu
     @PersistenceContext
     private EntityManager entityManager;  // Declara el EntityManager
     @Override
-    public List<Usuario> getUsuarios() { // consulta a la BBDD
+    public List<Usuario> getUsuarios() { // LISTA USUARIOS: consulta a la BBDD
         if (entityManager == null) {
             System.out.println("EntityManager is null");
         } else {
@@ -25,10 +25,17 @@ public class UsuarioDaoImp implements UsuarioDao { // Implementa la interfaz Usu
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(Long id) { // ELIMINA UN USUARIO
         Usuario usuario= entityManager.find(Usuario.class, id);
         entityManager.remove(usuario);
     }
+
+    @Override   // REGISTRA UN USUARIO
+    public Usuario registrar(Usuario usuario) {
+        entityManager.persist(usuario);
+        return usuario;
+    }
+
 
 
 }
