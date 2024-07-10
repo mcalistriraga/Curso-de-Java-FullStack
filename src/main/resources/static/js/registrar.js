@@ -30,7 +30,4 @@ async function registrarusuario() {
     },
     body: JSON.stringify(datos) //.stringify() conv obj JavaScrit a String JSON
   });
-  const usuario = await request.json();
-  console.log(usuario)
-
 }
