@@ -30,4 +30,6 @@ async function registrarusuario() {
     },
     body: JSON.stringify(datos) //.stringify() conv obj JavaScrit a String JSON
   });
+  alert("La cuenta fué creada con éxito!");
+  windows.location.href = "login.html";
 }
