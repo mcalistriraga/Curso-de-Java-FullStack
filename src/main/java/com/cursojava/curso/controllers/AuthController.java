@@ -1,5 +1,6 @@
 package com.cursojava.curso.controllers;
 
+import  com.cursojava.curso.utils.JWTUtil;
 import  com.cursojava.curso.dao.UsuarioDao;
 import com.cursojava.curso.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @Autowired
     private UsuarioDao usuarioDao;
+    @Autowired
+    private JWTUtil jwtUtil;
     @RequestMapping(value="api/login", method = RequestMethod.POST) // INICIAR SESION DE USUARIO
     public String login(@RequestBody Usuario usuario) {
-        if (usuarioDao.verificarCredenciales(usuario)) {
-            return "Ok";
+
+        Usuario usuarioLogeado = usuarioDao.obtenerUsuarioPorCredenciales(usuario);
+        if (usuarioLogeado != null) {
+            String tokenJWT = jwtUtil.create(String.valueOf(usuarioLogeado.getId()), usuarioLogeado.getEmail());
+            return tokenJWT;
         }
-        return "False";
+        return "FAIL";
     }
 
 }

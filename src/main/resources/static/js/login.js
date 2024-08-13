@@ -23,7 +23,9 @@ async function iniciarSesion() {
     const respuesta = await request.text();
     console.log(respuesta);
 
-    if (respuesta == "Ok") {
+    if (respuesta != "FAIL") { // aqui debería ser el ! err 401
+      localStorage.token = respuesta;
+      localStorage.email = datos.email;
       window.location.href = "usuarios.html";
     } else {
       alert("Las credenciales son incorrectas. Por favor intente nuevamente");
